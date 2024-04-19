@@ -14,8 +14,8 @@ def my_job():
     zone = pytz.timezone(settings.TIME_ZONE)
     current_datetime = datetime.now(zone)
 
-    mailings = Mailing.objects.all().filter(status='created').filter(time_start__lte=current_datetime).filter(
-        time_end__gte=current_datetime)
+    mailings = Mailing.objects.filter(status='created', time_start__lte=current_datetime)
+    print(mailings)
     for mailing in mailings:
         result = send_mail(
             subject=mailing.message.title,
@@ -25,12 +25,13 @@ def my_job():
         )
         print(result)
 
+
         if result == 1:
             status = 'отправлено'
         else:
             status = 'ошибка отправки'
 
-        log = Log(mailing=mailing, status=status)
+        log = Log(mailing_name=mailing, status=status)
         log.save()
 
         if mailing.period == "1":

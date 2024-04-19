@@ -1,0 +1,27 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<div class="col-12 mt-5 mb-5 text-center">
+    <h2> Отчет по рассылкам</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Название рассылки </th>
+      <th scope="col">Дата и время последней рассылки</th>
+      <th scope="col">Статус рассылки</th>
+      <th scope="col">Ответ сервера</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for object in object_list %}
+    <tr>
+      <td>{{object.mailing_name.name}}</td>
+      <td>{{object.date}}</td>
+      <td>{{object.status}}</td>
+      <td>{{object.response}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -4,7 +4,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from blog.models import Blog
 from mailing.forms import MailingForm, ClientForm, MessageForm, MailingModeratorForm
-from mailing.models import Mailing, Client, Message
+from mailing.models import Mailing, Client, Message, Log
 
 
 class MailingListView(LoginRequiredMixin, ListView):
@@ -107,3 +107,8 @@ class IndexView(TemplateView):
         active_mailing_count = Mailing.objects.filter(is_active=True).count()
         context['active_mailing_count'] = active_mailing_count
         return context
+
+
+class LogListView(ListView):
+    model = Log
+    success_url = reverse_lazy('mailing:mailing_list')

@@ -3,6 +3,7 @@
 {% block content %}
 <div class="col-12 mb-5" xmlns="http://www.w3.org/1999/html">
     <a class=" btn btn-lg btn-outline-primary" href="{% url 'mailing:mailing_create' %}">Создать рассылку</a>
+    <a href="{% url 'mailing:log_list'%}" class="btn btn-secondary">Отчет по рассылкам</a>
 </div>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 

@@ -63,7 +63,7 @@ class Mailing(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, verbose_name='Владелец')
 
     def __str__(self):
-        return f'{self.time_start}, {self.period}, {self.status}'
+        return f'{self.time_start} {self.period} {self.status}'
 
     class Meta:
         verbose_name = 'Рассылка'

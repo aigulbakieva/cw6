@@ -5,27 +5,39 @@
     <title>Статистика</title>
 </head>
 <h1>Статистика сервиса</h1>
-<ul>
-    <p class="lead">Количество рассылок всего:{{object_list|length}}</p>
-    <p class="lead">Количество активных рассылок:{{active_mailing_count}}</p>
-    <p class="lead">Количество уникальных клиентов для рассылок:{{unique_clients_count}}</p>
-</ul>
-<div class="row">
-    {% for art in article_list %}
-    <div class="col-md-4">
-        <div class="card mb-4 box-shadow">
-            <div class="card-body">
-                <p class="card-text">{{art.title}}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn">
-                        <a href="{% url 'blog:blog_detail' art.pk %}" class="btn btn-primary">Открыть</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Количество рассылок всего</th>
+        <th scope="col">Количество активных рассылок</th>
+        <th scope="col">Количество уникальных клиентов для рассылок:</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>{{object_list|length}}</td>
+        <td>{{active_mailing_count}}</td>
+        <td>{{unique_clients_count}}</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <div class="row">
+        {% for art in article_list %}
+        <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <p class="card-text">{{art.title}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn">
+                            <a href="{% url 'blog:blog_detail' art.pk %}" class="btn btn-primary">Открыть</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 {% endfor %}
 
 {% endblock %}
