@@ -1,0 +1,27 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<div class="col-12">
+    <form class="row" method="post" enctype="multipart/form-data">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">
+                        Мой профиль
+                    </h2>
+                    <div class="card-body">
+                        {% csrf_token %}
+                        {{ form.as_p}}
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'users:genpassword'%}" class="btn btn-danger">Восстановить пароль</a>
+        </div>
+</div>
+</form>
+
+</div>
+
+
+{% endblock %}

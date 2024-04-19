@@ -1,0 +1,32 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<div class="col-12 mt-5 mb-5 text-center">
+    <h2> Список сообщений </h2>
+</div>
+<div class="col-12 mb-5">
+    <a class=" btn btn-lg btn-outline-Success" href="{% url 'mailing:message_create' %}">Создать сообщение</a>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    {% for object in object_list %}
+    <div class="col-12">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+                <div class="card-body">
+                    <h4 class="card-title pricing-card-title">Тема: {{object.title}}</h4>
+                    <p class="card-text">Сообщение: {{object.message}}</p>
+                    {% if object.owner == user or user.is_superuser %}
+                    <a href="{% url 'mailing:message_update' object.pk %}"
+                       class="w-100 btn btn-lg btn-outline-Success">Изменить</a>
+                    {% endif %}
+
+                    <a href="{% url 'mailing:message_delete' object.pk %}"
+                       class="w-100 btn btn-lg btn-outline-Danger">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

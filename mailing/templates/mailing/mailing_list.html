@@ -1,0 +1,44 @@
+{% extends 'mailing/base.html' %}
+
+{% block content %}
+<div class="col-12 mb-5" xmlns="http://www.w3.org/1999/html">
+    <a class=" btn btn-lg btn-outline-primary" href="{% url 'mailing:mailing_create' %}">Создать рассылку</a>
+</div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    {% for object in object_list %}
+    <div class="col-12">
+        <div class="col-6">
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 fw-normal">{{ object.name }}</h4>
+                </div>
+                <div class="card-body">
+                    </ul>
+                    <p class="card-text">Клиенты:
+                    <ul>
+                        {% for cl in object.client.all %}
+                        <li>{{cl.email}}</li>
+                        {% endfor %}
+                    </ul>
+                    <p class="card_text">Сообщение:
+                    <ul>
+                        <li>{{object.message.title}}</li>
+                    </ul>
+                    <p class="card_text">Статус:
+                    <ul>
+                        <li>{{object.status}}</li>
+                    </ul>
+                    </p>
+                    <a href="{% url 'mailing:mailing_detail' object.pk %}" class="w-100 btn btn-lg btn-outline-primary">Просмотреть</a>
+                    {% if object.owner == user or user.is_superuser or user.perms.mailing.can_deactivate_mailing %}
+                    <a href="{% url 'mailing:mailing_update' object.pk %}" class="w-100 btn btn-lg btn-outline-Success">Изменить</a>
+                    <a href="{% url 'mailing:mailing_delete' object.pk %}" class="w-100 btn btn-lg btn-outline-Danger">Удалить</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,90 @@
+[
+  {
+    "model": "mailing.client",
+    "pk": 1,
+    "fields": {
+      "full_name": "петров петр",
+      "email": "test@sky.pro",
+      "comment": "test"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 2,
+    "fields": {
+      "full_name": "Иванов Иван Иванович",
+      "email": "test11@sky.pro",
+      "comment": "///"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 3,
+    "fields": {
+      "full_name": "Вовкин Вова",
+      "email": "vovka@sky.pro",
+      "comment": "Привет !"
+    }
+  },
+  {
+    "model": "mailing.client",
+    "pk": 4,
+    "fields": {
+      "full_name": "Зефиркина Зоя",
+      "email": "zoya@test.ru",
+      "comment": "123453"
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 1,
+    "fields": {
+      "name": "Ежедневная рассылка",
+      "time_start": "2024-04-07T00:58:20Z",
+      "period": "1",
+      "status": "created",
+      "client": [
+        1
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 2,
+    "fields": {
+      "name": "Еженедельная рассылка",
+      "time_start": "2024-04-07T01:00:10Z",
+      "period": "7",
+      "status": "created",
+      "client": [
+        2
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 3,
+    "fields": {
+      "name": "Раз в месяц",
+      "time_start": "2024-04-07T01:01:21Z",
+      "period": "30",
+      "status": "created",
+      "client": [
+        3
+      ]
+    }
+  },
+  {
+    "model": "mailing.mailing",
+    "pk": 5,
+    "fields": {
+      "name": "TEst",
+      "time_start": "2024-04-05T00:00:00Z",
+      "period": "1",
+      "status": "created",
+      "client": [
+        2
+      ]
+    }
+  }
+]
